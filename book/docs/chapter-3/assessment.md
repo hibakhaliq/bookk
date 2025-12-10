@@ -26,8 +26,8 @@ D) Standard Definition File
 Which element in URDF defines the physical properties of a link?
 A) <visual>
 B) <collision>
-C) <inertial>
-D) <geometry><geometry />
+C) `<inertial>`
+D) `<geometry>`
 
 ### Question 3
 What is the primary purpose of the Gazebo physics engine?
