@@ -1,0 +1,121 @@
+# API Contract: Book Interactive Features
+
+## Purpose
+This API contract defines the endpoints for interactive features in the robotics book, such as assignment submission, progress tracking, and simulation integration.
+
+## Base URL
+`https://api.robotics-book.com/v1`
+
+## Authentication
+All endpoints require a valid API key in the header:
+```
+Authorization: Bearer {api_key}
+```
+
+## Endpoints
+
+### GET /assignments/{chapterId}
+Retrieve assignments for a specific chapter
+
+**Path Parameters**:
+- `chapterId` (string): The ID of the chapter
+
+**Response** (200 OK):
+```json
+{
+  "chapterId": "chapter-1",
+  "assignments": [
+    {
+      "id": "assignment-1",
+      "title": "Basic ROS 2 Publisher",
+      "description": "Create a simple ROS 2 publisher node",
+      "difficulty": "beginner",
+      "estimatedTime": 45,
+      "requirements": [
+        "ROS 2 installed",
+        "Basic Python knowledge"
+      ],
+      "learningOutcomes": [
+        "Understanding ROS 2 publisher nodes",
+        "Creating basic ROS 2 packages"
+      ]
+    }
+  ]
+}
+```
+
+### POST /submissions
+Submit an assignment for grading
+
+**Request Body**:
+```json
+{
+  "assignmentId": "assignment-1",
+  "userId": "user-123",
+  "solution": "string",
+  "codeFiles": ["file1.py", "file2.cpp"]
+}
+```
+
+**Response** (201 Created):
+```json
+{
+  "submissionId": "sub-456",
+  "status": "submitted",
+  "submittedAt": "2025-12-07T10:30:00Z"
+}
+```
+
+### GET /progress/{userId}
+Retrieve user progress across chapters
+
+**Path Parameters**:
+- `userId` (string): The ID of the user
+
+**Response** (200 OK):
+```json
+{
+  "userId": "user-123",
+  "progress": [
+    {
+      "chapterId": "chapter-1",
+      "completed": true,
+      "assignmentsCompleted": 2,
+      "totalAssignments": 3,
+      "assessmentScore": 85
+    },
+    {
+      "chapterId": "chapter-2",
+      "completed": false,
+      "assignmentsCompleted": 1,
+      "totalAssignments": 3,
+      "assessmentScore": null
+    }
+  ]
+}
+```
+
+### GET /simulations/{chapterId}
+Get simulation configuration for a chapter
+
+**Path Parameters**:
+- `chapterId` (string): The ID of the chapter
+
+**Response** (200 OK):
+```json
+{
+  "chapterId": "chapter-3",
+  "simulationType": "gazebo",
+  "config": {
+    "worldFile": "turtlebot3_world.world",
+    "robotModel": "turtlebot3_burger",
+    "tasks": [
+      "navigation",
+      "mapping"
+    ]
+  },
+  "requirements": [
+    "Gazebo installed",
+    "ROS 2 Gazebo packages"
+  ]
+}
