@@ -97,7 +97,7 @@ Create a complete simulation scenario:
 
 ### Multiple Choice Answers:
 1. C) Simulation Description Format
-2. C) <inertial>
+2. C) `<inertial>`
 3. B) To simulate physical interactions and dynamics
 4. B) libgazebo_ros_diff_drive.so
 5. C) .sdf
