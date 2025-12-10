@@ -1,0 +1,27 @@
+{
+  "id": "chapter-2/assessment",
+  "title": "Chapter 2: Assessment",
+  "description": "Assessment Overview",
+  "source": "@site/docs/chapter-2/assessment.md",
+  "sourceDirName": "chapter-2",
+  "slug": "/chapter-2/assessment",
+  "permalink": "/book/docs/chapter-2/assessment",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapter-2/assessment.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 2: Assignments",
+    "permalink": "/book/docs/chapter-2/assignments"
+  },
+  "next": {
+    "title": "Chapter 3: Gazebo Simulation",
+    "permalink": "/book/docs/chapter-3/"
+  }
+}

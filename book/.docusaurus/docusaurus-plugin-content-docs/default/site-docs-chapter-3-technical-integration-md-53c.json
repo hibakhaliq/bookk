@@ -1,0 +1,27 @@
+{
+  "id": "chapter-3/technical-integration",
+  "title": "Chapter 3: Technical Integration",
+  "description": "Framework Integration Overview",
+  "source": "@site/docs/chapter-3/technical-integration.md",
+  "sourceDirName": "chapter-3",
+  "slug": "/chapter-3/technical-integration",
+  "permalink": "/book/docs/chapter-3/technical-integration",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapter-3/technical-integration.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 3: Purpose and Focus",
+    "permalink": "/book/docs/chapter-3/purpose"
+  },
+  "next": {
+    "title": "Chapter 3: Assignments",
+    "permalink": "/book/docs/chapter-3/assignments"
+  }
+}

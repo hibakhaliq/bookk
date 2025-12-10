@@ -1,0 +1,23 @@
+{
+  "id": "chapter-3/assessment",
+  "title": "Chapter 3: Assessment",
+  "description": "Assessment Overview",
+  "source": "@site/docs/chapter-3/assessment.md",
+  "sourceDirName": "chapter-3",
+  "slug": "/chapter-3/assessment",
+  "permalink": "/book/docs/chapter-3/assessment",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapter-3/assessment.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Chapter 3: Assignments",
+    "permalink": "/book/docs/chapter-3/assignments"
+  }
+}
