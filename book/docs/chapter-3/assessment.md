@@ -24,8 +24,8 @@ D) Standard Definition File
 
 ### Question 2
 Which element in URDF defines the physical properties of a link?
-A) <visual>
-B) <collision>
+A) `<visual>`
+B) `<collision>`
 C) `<inertial>`
 D) `<geometry>`
 
