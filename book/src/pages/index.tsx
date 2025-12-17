@@ -1,44 +1,50 @@
-import type {ReactNode} from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
+import React from 'react';
+import Hero from '../components/Hero';
+import chapters from '../data/chapters.js'; 
 
-import styles from './index.module.css';
-
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+export default function Home() {
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
+    <div>
+      <Hero />
+
+      {/* Chapters Section */}
+      <section style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '2.5rem' }}>
+          Chapters & Modules
+        </h2>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+          gap: '2rem'
+        }}>
+          {chapters.map((chapter, idx) => (
+            <div key={idx} style={{
+              padding: '1.5rem',
+              backgroundColor: '#f3f4f6',
+              borderRadius: '1rem',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.05)'
+            }}>
+              <h3 style={{ marginBottom: '1rem', color: '#6366f1' }}>{chapter.title}</h3>
+              <p style={{ opacity: 0.85 }}>{chapter.description}</p>
+              <a href={chapter.link} style={{
+                marginTop: '1rem',
+                display: 'inline-block',
+                color: 'white',
+                backgroundColor: '#111827',
+                padding: '0.5rem 1.2rem',
+                borderRadius: '0.5rem',
+                textDecoration: 'none'
+              }}>Read Chapter</a>
+            </div>
+          ))}
         </div>
-      </div>
-    </header>
-  );
-}
+      </section>
 
-export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
-    </Layout>
+      {/* Optional extra sections like ROS 2, Gazebo */}
+      <section style={{ padding: '4rem 2rem', textAlign: 'center', backgroundColor: '#e0f2fe' }}>
+        <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Extra Tutorials</h2>
+        <p style={{ fontSize: '1.2rem' }}>ROS 2, Gazebo, Hands-on exercises, and more.</p>
+      </section>
+    </div>
   );
 }

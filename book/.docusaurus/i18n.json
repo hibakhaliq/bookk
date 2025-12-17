@@ -14,7 +14,7 @@
       "path": "en",
       "translate": false,
       "url": "https://robotics-book.example.com",
-      "baseUrl": "/book/"
+      "baseUrl": "/"
     }
   }
 }

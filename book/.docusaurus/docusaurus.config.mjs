@@ -4,7 +4,7 @@
  * Modify the docusaurus.config.js file at your site's root instead.
  */
 export default {
-  "title": "Robotics Book",
+  "title": "Physical AI & Humanoid Robotics Book",
   "tagline": "A comprehensive guide to robotics with ROS 2, Gazebo, Isaac, VSLAM, and VLA",
   "favicon": "img/favicon.ico",
   "future": {
@@ -29,7 +29,7 @@ export default {
     "experimental_router": "browser"
   },
   "url": "https://robotics-book.example.com",
-  "baseUrl": "/book/",
+  "baseUrl": "/",
   "organizationName": "your-organization",
   "projectName": "robotics-book",
   "onBrokenLinks": "throw",
@@ -68,6 +68,9 @@ export default {
         }
       }
     ]
+  ],
+  "plugins": [
+    "./docusaurus-plugin-chatbot.js"
   ],
   "themeConfig": {
     "image": "img/docusaurus-social-card.jpg",
@@ -375,7 +378,6 @@ export default {
     "static"
   ],
   "customFields": {},
-  "plugins": [],
   "themes": [],
   "scripts": [],
   "headTags": [],

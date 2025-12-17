@@ -4,4 +4,5 @@ export default [
   require("D:\\book\\book\\node_modules\\@docusaurus\\theme-classic\\lib\\prism-include-languages"),
   require("D:\\book\\book\\node_modules\\@docusaurus\\theme-classic\\lib\\nprogress"),
   require("D:\\book\\book\\src\\css\\custom.css"),
+  require("D:\\book\\book\\src\\client\\chatbot.js"),
 ];

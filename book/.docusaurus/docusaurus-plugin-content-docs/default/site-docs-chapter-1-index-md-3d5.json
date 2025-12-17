@@ -5,7 +5,7 @@
   "source": "@site/docs/chapter-1/index.md",
   "sourceDirName": "chapter-1",
   "slug": "/chapter-1/",
-  "permalink": "/book/docs/chapter-1/",
+  "permalink": "/docs/chapter-1/",
   "draft": false,
   "unlisted": false,
   "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapter-1/index.md",
@@ -18,10 +18,10 @@
   "sidebar": "tutorialSidebar",
   "previous": {
     "title": "Introduction to the Physical AI & Humanoid Robotics Book",
-    "permalink": "/book/docs/intro"
+    "permalink": "/docs/intro"
   },
   "next": {
     "title": "Chapter 1: Purpose and Focus",
-    "permalink": "/book/docs/chapter-1/purpose"
+    "permalink": "/docs/chapter-1/purpose"
   }
 }

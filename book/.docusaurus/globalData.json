@@ -1,141 +1,141 @@
 {
   "docusaurus-plugin-content-docs": {
     "default": {
-      "path": "/book/docs",
+      "path": "/docs",
       "versions": [
         {
           "name": "current",
           "label": "Next",
           "isLast": true,
-          "path": "/book/docs",
+          "path": "/docs",
           "mainDocId": "intro",
           "docs": [
             {
               "id": "chapter-1/assessment",
-              "path": "/book/docs/chapter-1/assessment",
+              "path": "/docs/chapter-1/assessment",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-1/assignments",
-              "path": "/book/docs/chapter-1/assignments",
+              "path": "/docs/chapter-1/assignments",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-1/index",
-              "path": "/book/docs/chapter-1/",
+              "path": "/docs/chapter-1/",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-1/lessons/lesson-1.1/index",
-              "path": "/book/docs/chapter-1/lessons/lesson-1.1/"
+              "path": "/docs/chapter-1/lessons/lesson-1.1/"
             },
             {
               "id": "chapter-1/lessons/lesson-1.2/index",
-              "path": "/book/docs/chapter-1/lessons/lesson-1.2/"
+              "path": "/docs/chapter-1/lessons/lesson-1.2/"
             },
             {
               "id": "chapter-1/purpose",
-              "path": "/book/docs/chapter-1/purpose",
+              "path": "/docs/chapter-1/purpose",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-1/technical-integration",
-              "path": "/book/docs/chapter-1/technical-integration",
+              "path": "/docs/chapter-1/technical-integration",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-2/assessment",
-              "path": "/book/docs/chapter-2/assessment",
+              "path": "/docs/chapter-2/assessment",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-2/assignments",
-              "path": "/book/docs/chapter-2/assignments",
+              "path": "/docs/chapter-2/assignments",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-2/index",
-              "path": "/book/docs/chapter-2/",
+              "path": "/docs/chapter-2/",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-2/purpose",
-              "path": "/book/docs/chapter-2/purpose",
+              "path": "/docs/chapter-2/purpose",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-2/technical-integration",
-              "path": "/book/docs/chapter-2/technical-integration",
+              "path": "/docs/chapter-2/technical-integration",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-3/assessment",
-              "path": "/book/docs/chapter-3/assessment",
+              "path": "/docs/chapter-3/assessment",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-3/assignments",
-              "path": "/book/docs/chapter-3/assignments",
+              "path": "/docs/chapter-3/assignments",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-3/index",
-              "path": "/book/docs/chapter-3/",
+              "path": "/docs/chapter-3/",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-3/purpose",
-              "path": "/book/docs/chapter-3/purpose",
+              "path": "/docs/chapter-3/purpose",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "chapter-3/technical-integration",
-              "path": "/book/docs/chapter-3/technical-integration",
+              "path": "/docs/chapter-3/technical-integration",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "intro",
-              "path": "/book/docs/intro",
+              "path": "/docs/intro",
               "sidebar": "tutorialSidebar"
             },
             {
               "id": "tutorial-basics/congratulations",
-              "path": "/book/docs/tutorial-basics/congratulations"
+              "path": "/docs/tutorial-basics/congratulations"
             },
             {
               "id": "tutorial-basics/create-a-blog-post",
-              "path": "/book/docs/tutorial-basics/create-a-blog-post"
+              "path": "/docs/tutorial-basics/create-a-blog-post"
             },
             {
               "id": "tutorial-basics/create-a-document",
-              "path": "/book/docs/tutorial-basics/create-a-document"
+              "path": "/docs/tutorial-basics/create-a-document"
             },
             {
               "id": "tutorial-basics/create-a-page",
-              "path": "/book/docs/tutorial-basics/create-a-page"
+              "path": "/docs/tutorial-basics/create-a-page"
             },
             {
               "id": "tutorial-basics/deploy-your-site",
-              "path": "/book/docs/tutorial-basics/deploy-your-site"
+              "path": "/docs/tutorial-basics/deploy-your-site"
             },
             {
               "id": "tutorial-basics/markdown-features",
-              "path": "/book/docs/tutorial-basics/markdown-features"
+              "path": "/docs/tutorial-basics/markdown-features"
             },
             {
               "id": "tutorial-extras/manage-docs-versions",
-              "path": "/book/docs/tutorial-extras/manage-docs-versions"
+              "path": "/docs/tutorial-extras/manage-docs-versions"
             },
             {
               "id": "tutorial-extras/translate-your-site",
-              "path": "/book/docs/tutorial-extras/translate-your-site"
+              "path": "/docs/tutorial-extras/translate-your-site"
             }
           ],
           "draftIds": [],
           "sidebars": {
             "tutorialSidebar": {
               "link": {
-                "path": "/book/docs/intro",
+                "path": "/docs/intro",
                 "label": "intro"
               }
             }

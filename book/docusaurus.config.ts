@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Robotics Book',
+  title: 'Physical AI & Humanoid Robotics Book',
   tagline: 'A comprehensive guide to robotics with ROS 2, Gazebo, Isaac, VSLAM, and VLA',
   favicon: 'img/favicon.ico',
 
@@ -66,6 +66,11 @@ const config: Config = {
         },
       } satisfies Preset.Options,
     ],
+  ],
+
+  plugins: [
+    // Add the chatbot integration as a plugin
+    './docusaurus-plugin-chatbot.js',
   ],
 
   themeConfig: {
