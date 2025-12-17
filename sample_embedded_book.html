@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Book Page with RAG Chatbot</title>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .book-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        p {
+            margin-bottom: 1.5em;
+            text-align: justify;
+        }
+        .highlight {
+            background-color: #fffacd;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .chapter-intro {
+            font-style: italic;
+            color: #7f8c8d;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="book-content">
+        <h1>The Art of Machine Learning</h1>
+        <h2>Chapter 3: Neural Networks Explained</h2>
+
+        <div class="chapter-intro">
+            In this chapter, we explore the fascinating world of neural networks,
+            the foundation of deep learning and artificial intelligence.
+        </div>
+
+        <p>Neural networks are computing systems inspired by the human brain. They consist of interconnected nodes or "neurons" that process information. Each connection between neurons can transmit a signal to another neuron, and the receiving neuron can process the signal and optionally relay it to other neurons.</p>
+
+        <p>The key components of a neural network include:</p>
+
+        <ul>
+            <li><strong>Input Layer</strong>: Receives the initial data</li>
+            <li><strong>Hidden Layers</strong>: Process the data through weighted connections</li>
+            <li><strong>Output Layer</strong>: Produces the final result</li>
+        </ul>
+
+        <p>Training a neural network involves adjusting the weights of connections to minimize the difference between the network's output and the expected output. This process, called backpropagation, allows the network to learn from examples and improve its performance over time.</p>
+
+        <p class="highlight">The beauty of neural networks lies in their ability to learn complex patterns from data without being explicitly programmed for each specific task. This makes them incredibly powerful for tasks like image recognition, natural language processing, and predictive analytics.</p>
+
+        <h3>Types of Neural Networks</h3>
+
+        <p>There are several types of neural networks, each designed for specific tasks:</p>
+
+        <p><strong>Feedforward Networks</strong> are the simplest type, where information flows in one direction from input to output. These are commonly used for pattern recognition tasks.</p>
+
+        <p><strong>Recurrent Neural Networks (RNNs)</strong> have connections that loop back, allowing them to maintain information about previous inputs. This makes them ideal for sequence prediction tasks like language modeling.</p>
+
+        <p><strong>Convolutional Neural Networks (CNNs)</strong> are specialized for processing grid-like data such as images. They use convolutional layers to automatically detect features like edges, textures, and objects.</p>
+
+        <p>The development of neural networks has revolutionized artificial intelligence, enabling computers to perform tasks that were previously thought to require human-level intelligence. From self-driving cars to medical diagnosis, neural networks are transforming industries and opening new possibilities for human-computer collaboration.</p>
+    </div>
+
+    <!-- Chatbot Configuration -->
+    <script>
+        // Configure the chatbot API URL
+        // Replace with your actual backend URL when deployed
+        window.CHATBOT_API_URL = 'http://localhost:8000/api/v1';
+    </script>
+
+    <!-- Chatbot Embed Script -->
+    <!-- This will be replaced with the actual path to your embed script -->
+    <script>
+        // Chatbot Embed Script for Speckit Integration
+        // This script can be included in Speckit-generated HTML pages to embed the chatbot
+
+        (function() {
+          // Configuration
+          const API_BASE_URL = window.CHATBOT_API_URL || 'http://localhost:8000/api/v1';
+          const CONTAINER_ID = 'rag-chatbot-container';
+
+          // Create the chatbot container and UI
+          function createChatbotUI() {
+            // Create main container
+            const container = document.createElement('div');
+            container.id = CONTAINER_ID;
+            container.style.cssText = `
+              position: fixed;
+              bottom: 20px;
+              right: 20px;
+              width: 400px;
+              height: 600px;
+              z-index: 10000;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+              border-radius: 8px;
+              overflow: hidden;
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            `;
+
+            // Create toggle button
+            const toggleBtn = document.createElement('button');
+            toggleBtn.textContent = '💬 Ask Book';
+            toggleBtn.style.cssText = `
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              z-index: 10001;
+              background: #4f46e5;
+              color: white;
+              border: none;
+              border-radius: 50%;
+              width: 60px;
+              height: 60px;
+              font-size: 24px;
+              cursor: pointer;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            `;
+            toggleBtn.onclick = toggleChatbot;
+
+            document.body.appendChild(toggleBtn);
+            document.body.appendChild(container);
+
+            // Initialize chatbot UI inside container
+            initializeChatInterface(container);
+          }
+
+          function initializeChatInterface(container) {
+            container.innerHTML = `
+              <div id="chatbot-header" style="
+                background: #4f46e5;
+                color: white;
+                padding: 15px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              ">
+                <h3 style="margin: 0; font-size: 16px;">Book Assistant</h3>
+                <button id="close-chatbot" style="
+                  background: none;
+                  border: none;
+                  color: white;
+                  font-size: 20px;
+                  cursor: pointer;
+                ">&times;</button>
+              </div>
+              <div id="chatbot-messages" style="
+                height: calc(100% - 120px);
+                overflow-y: auto;
+                padding: 15px;
+                background: #f9fafb;
+              "></div>
+              <div id="chatbot-input-area" style="
+                padding: 15px;
+                background: white;
+                border-top: 1px solid #e5e7eb;
+                display: none;
+              ">
+                <div style="display: flex; margin-bottom: 10px;">
+                  <button id="full-book-mode" style="
+                    flex: 1;
+                    padding: 8px;
+                    background: #4f46e5;
+                    color: white;
+                    border: 1px solid #4f46e5;
+                    border-radius: 4px 0 0 4px;
+                    cursor: pointer;
+                  ">Full Book</button>
+                  <button id="selected-text-mode" style="
+                    flex: 1;
+                    padding: 8px;
+                    background: #e5e7eb;
+                    color: inherit;
+                    border: 1px solid #d1d5db;
+                    border-left: none;
+                    border-radius: 0 4px 4px 0;
+                    cursor: pointer;
+                  ">Selected Text</button>
+                </div>
+                <textarea
+                  id="chatbot-input"
+                  placeholder="Ask a question about this book..."
+                  style="
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #d1d5db;
+                    border-radius: 4px;
+                    resize: none;
+                    height: 60px;
+                    font-family: inherit;
+                  "></textarea>
+                <button id="send-message" style="
+                  margin-top: 10px;
+                  width: 100%;
+                  padding: 10px;
+                  background: #4f46e5;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                ">Send</button>
+              </div>
+            `;
+
+            // Add event listeners
+            document.getElementById('close-chatbot').onclick = () => {
+              container.style.display = 'none';
+            };
+
+            document.getElementById('send-message').onclick = sendMessage;
+            document.getElementById('chatbot-input').addEventListener('keypress', (e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+              }
+            });
+
+            document.getElementById('full-book-mode').onclick = () => setActiveMode('full_book');
+            document.getElementById('selected-text-mode').onclick = () => setActiveMode('selected_text');
+
+            // Set initial active mode
+            setActiveMode('full_book');
+
+            // Initialize with input area hidden
+            initializeChatbotSession();
+          }
+
+          let currentSessionToken = null;
+          let currentMode = 'full_book';
+
+          async function initializeChatbotSession() {
+            try {
+              const response = await fetch(`${API_BASE_URL}/start_session`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({})
+              });
+
+              const data = await response.json();
+              currentSessionToken = data.session_token;
+
+              addMessageToUI('Hello! I\'m your book assistant. Ask me anything about this book!', 'assistant');
+            } catch (error) {
+              console.error('Error initializing chatbot session:', error);
+              addMessageToUI('Sorry, I\'m having trouble connecting. Please check if the backend is running.', 'assistant');
+            }
+          }
+
+          async function sendMessage() {
+            const inputElement = document.getElementById('chatbot-input');
+            const message = inputElement.value.trim();
+
+            if (!message || !currentSessionToken) return;
+
+            // Add user message to UI
+            addMessageToUI(message, 'user');
+            inputElement.value = '';
+
+            // Show loading indicator
+            const loadingMsg = addMessageToUI('Thinking...', 'assistant', true);
+
+            try {
+              // Get any selected text if in selected text mode
+              let selectedText = null;
+              if (currentMode === 'selected_text') {
+                const selection = window.getSelection();
+                selectedText = selection.toString().trim();
+                if (selectedText && selectedText.length > 2000) {
+                  selectedText = selectedText.substring(0, 2000);
+                }
+
+                if (!selectedText) {
+                  addMessageToUI('Please select some text on the page first.', 'assistant');
+                  return;
+                }
+              }
+
+              // Send message to backend
+              const response = await fetch(`${API_BASE_URL}/chat`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  message: message,
+                  session_token: currentSessionToken,
+                  query_type: currentMode,
+                  selected_text: selectedText || null
+                })
+              });
+
+              const data = await response.json();
+
+              // Remove loading indicator and add response
+              if (loadingMsg) loadingMsg.remove();
+              addMessageToUI(data.response, 'assistant');
+            } catch (error) {
+              console.error('Error sending message:', error);
+              if (loadingMsg) loadingMsg.remove();
+              addMessageToUI('Sorry, I encountered an error. Please check if the backend is running and accessible.', 'assistant');
+            }
+          }
+
+          function addMessageToUI(content, role, isTemp = false) {
+            const messagesContainer = document.getElementById('chatbot-messages');
+            const messageElement = document.createElement('div');
+            messageElement.style.cssText = `
+              margin-bottom: 15px;
+              padding: 10px;
+              border-radius: 8px;
+              max-width: 80%;
+              ${role === 'user' ? 'margin-left: auto; background: #dbeafe; text-align: right;' : 'margin-right: auto; background: white;'}
+            `;
+            messageElement.innerHTML = content;
+
+            if (isTemp) {
+              messageElement.id = 'temp-loading-msg';
+            }
+
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            return isTemp ? messageElement : null;
+          }
+
+          function setActiveMode(mode) {
+            currentMode = mode;
+
+            // Update button styles
+            const fullBookBtn = document.getElementById('full-book-mode');
+            const selectedTextBtn = document.getElementById('selected-text-mode');
+
+            if (mode === 'full_book') {
+              fullBookBtn.style.background = '#4f46e5';
+              fullBookBtn.style.color = 'white';
+              fullBookBtn.style.borderColor = '#4f46e5';
+              selectedTextBtn.style.background = '#e5e7eb';
+              selectedTextBtn.style.color = 'inherit';
+              selectedTextBtn.style.borderColor = '#d1d5db';
+            } else {
+              selectedTextBtn.style.background = '#4f46e5';
+              selectedTextBtn.style.color = 'white';
+              selectedTextBtn.style.borderColor = '#4f46e5';
+              fullBookBtn.style.background = '#e5e7eb';
+              fullBookBtn.style.color = 'inherit';
+              fullBookBtn.style.borderColor = '#d1d5db';
+            }
+          }
+
+          function toggleChatbot() {
+            const container = document.getElementById(CONTAINER_ID);
+            const inputArea = document.getElementById('chatbot-input-area');
+
+            if (container.style.display === 'none' || !container.style.display) {
+              container.style.display = 'block';
+              inputArea.style.display = 'block';
+            } else {
+              container.style.display = 'none';
+            }
+          }
+
+          // Initialize when DOM is loaded
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', createChatbotUI);
+          } else {
+            createChatbotUI();
+          }
+        })();
+    </script>
+</body>
+</html>

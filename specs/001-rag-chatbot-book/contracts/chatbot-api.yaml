@@ -1,0 +1,166 @@
+# OpenAPI Contract: RAG Chatbot Backend API
+
+version: 3.0.0
+info:
+  title: RAG Chatbot API
+  description: API for the Retrieval-Augmented Generation chatbot for book content
+  version: 1.0.0
+
+servers:
+  - url: https://api.rag-chatbot.example.com
+    description: Production server
+  - url: https://staging-api.rag-chatbot.example.com
+    description: Staging server
+
+paths:
+  /ingest:
+    post:
+      summary: Ingest book content for RAG
+      description: Process and store book content for retrieval-augmented generation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IngestRequest'
+      responses:
+        '200':
+          description: Content successfully ingested
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngestResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+
+  /chat:
+    post:
+      summary: Chat with the RAG system
+      description: Send a message to the chatbot and receive a response based on book content
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatRequest'
+      responses:
+        '200':
+          description: Chat response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    IngestRequest:
+      type: object
+      required:
+        - book_id
+        - content
+        - title
+      properties:
+        book_id:
+          type: string
+          description: Unique identifier for the book
+          example: "book-123"
+        title:
+          type: string
+          description: Title of the book
+          example: "Introduction to Machine Learning"
+        content:
+          type: string
+          description: The book content in text format
+          example: "Chapter 1: Introduction to ML concepts..."
+        metadata:
+          type: object
+          description: Additional metadata for the book
+          additionalProperties: true
+
+    IngestResponse:
+      type: object
+      required:
+        - status
+        - chunks_processed
+        - message
+      properties:
+        status:
+          type: string
+          enum: [success, error]
+          example: "success"
+        chunks_processed:
+          type: integer
+          description: Number of content chunks processed
+          example: 45
+        message:
+          type: string
+          description: Human-readable status message
+          example: "Book content successfully ingested and indexed"
+
+    ChatRequest:
+      type: object
+      required:
+        - message
+        - session_token
+      properties:
+        message:
+          type: string
+          description: The user's message/query
+          example: "What is the main concept discussed in chapter 3?"
+        session_token:
+          type: string
+          description: Session identifier for maintaining conversation context
+          example: "sess-abc123xyz"
+        query_type:
+          type: string
+          enum: [full_book, selected_text]
+          description: Type of query to perform
+          default: "full_book"
+        selected_text:
+          type: string
+          description: Text selected by user for selected_text queries (up to 2000 chars)
+          example: "The fundamental theorem of machine learning states that..."
+
+    ChatResponse:
+      type: object
+      required:
+        - response
+        - session_token
+        - sources
+      properties:
+        response:
+          type: string
+          description: The chatbot's response to the user's message
+          example: "Chapter 3 discusses the fundamental theorem of machine learning..."
+        session_token:
+          type: string
+          description: Session identifier
+          example: "sess-abc123xyz"
+        sources:
+          type: array
+          items:
+            type: object
+            properties:
+              chunk_id:
+                type: string
+                description: Identifier of the source chunk
+              similarity_score:
+                type: number
+                format: float
+                description: Similarity score of the source chunk
+                minimum: 0
+                maximum: 1
+              content_preview:
+                type: string
+                description: Preview of the source content
+          description: List of source chunks used to generate the response
+        query_type:
+          type: string
+          enum: [full_book, selected_text]
+          description: Type of query that was performed

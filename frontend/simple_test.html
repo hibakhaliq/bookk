@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chatbot Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Simple Chatbot Test Page</h1>
+        <p>This is a simple test page to verify the chatbot appears.</p>
+        <p>Select some text and click the chatbot button to test the selected text feature.</p>
+    </div>
+
+    <script>
+        // Set the API URL to point to our backend
+        window.CHATBOT_API_URL = 'http://127.0.0.1:9008/api/v1';
+
+        // Log for debugging
+        console.log('API URL set to:', window.CHATBOT_API_URL);
+    </script>
+    <script src="./src/embed/ChatbotEmbed.js"></script>
+
+    <script>
+        // Check if the chatbot elements are being created
+        setTimeout(function() {
+            console.log('Looking for chatbot elements...');
+            console.log('Toggle button exists:', document.querySelector('button[style*="position: absolute"]'));
+            console.log('Container exists:', document.getElementById('rag-chatbot-container'));
+        }, 2000);
+    </script>
+</body>
+</html>

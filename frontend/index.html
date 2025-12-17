@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .book-content {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .nav {
+            margin: 20px 0;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 4px;
+        }
+        .nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>RAG Chatbot Test Page</h1>
+
+    <div class="nav">
+        <a href="test.html">Test Page with Book Content</a> |
+        <a href="simple_test.html">Simple Test Page</a>
+    </div>
+
+    <div class="book-content">
+        <h2>Welcome to the RAG Chatbot Test</h2>
+        <p>This is a test page for the RAG Chatbot integration. The chatbot should appear as a floating button in the bottom-right corner of the screen.</p>
+
+        <p>To test the chatbot:</p>
+        <ol>
+            <li>Make sure the backend is running on port 9008</li>
+            <li>Look for the "💬 Ask Book" button in the bottom-right corner</li>
+            <li>Click the button to open the chat interface</li>
+            <li>Ask questions about the book content on this page</li>
+        </ol>
+    </div>
+
+    <script>
+        // Set the API URL to point to our backend
+        window.CHATBOT_API_URL = 'http://127.0.0.1:9008/api/v1';
+    </script>
+    <script src="./src/embed/ChatbotEmbed.js"></script>
+</body>
+</html>

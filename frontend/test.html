@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .book-content {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        h1, h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sample Book Content</h1>
+
+    <div class="book-content">
+        <h2>Chapter 1: Introduction to RAG Systems</h2>
+        <p>Retrieval-Augmented Generation (RAG) is a technique that combines the power of large language models with the precision of information retrieval. By retrieving relevant documents before generating responses, RAG systems can provide more accurate and factual answers.</p>
+
+        <p>The architecture of a RAG system typically involves two main components: a retriever that finds relevant documents from a knowledge base, and a generator that formulates responses based on the retrieved information and the original query.</p>
+
+        <p>One of the key advantages of RAG systems is their ability to provide up-to-date information by retrieving from recently updated knowledge bases, without requiring retraining of the entire model.</p>
+    </div>
+
+    <div class="book-content">
+        <h2>Chapter 2: Vector Databases</h2>
+        <p>Vector databases are specialized databases designed to store and retrieve high-dimensional vectors efficiently. These databases use techniques like approximate nearest neighbor (ANN) search to find similar vectors quickly.</p>
+
+        <p>Popular vector databases include Pinecone, Weaviate, and Qdrant. Each has its own strengths in terms of scalability, performance, and feature set.</p>
+
+        <p>When choosing a vector database for a RAG system, consider factors such as query performance, scalability requirements, and integration complexity.</p>
+    </div>
+
+    <script>
+        // Set the API URL to point to our backend
+        window.CHATBOT_API_URL = 'http://127.0.0.1:9008/api/v1';
+
+        // Debug: Log when the script is loaded
+        console.log('Chatbot script configuration loaded');
+
+        // Load the chatbot script after the DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM is ready, loading chatbot...');
+
+            // Create script element for the chatbot
+            var script = document.createElement('script');
+            script.src = './src/embed/ChatbotEmbed.js';
+            script.onload = function() {
+                console.log('Chatbot script loaded successfully');
+            };
+            script.onerror = function() {
+                console.error('Failed to load chatbot script');
+            };
+
+            // Add the script to the page
+            document.head.appendChild(script);
+        });
+    </script>
+</body>
+</html>

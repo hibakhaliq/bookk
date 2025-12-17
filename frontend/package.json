@@ -1,0 +1,30 @@
+{
+  "name": "rag-chatbot-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for the RAG Chatbot integrated with Speckit book",
+  "main": "src/embed/ChatbotEmbed.js",
+  "scripts": {
+    "start": "npx serve -s .",
+    "build": "echo 'No build step required for embed script'",
+    "test": "echo 'No tests specified'",
+    "eject": "echo 'Not applicable for embed script'"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
